@@ -1,9 +1,9 @@
-/* ===== CONFIGURAÇÕES GERAIS E CORES ===== */
+/* ===== VARIÁVEIS DE CORES E RESET ===== */
 :root {
-    --primary-pink: #ff1493; /* Rosa Neon */
+    --primary: #ff1493; /* Rosa Neon */
     --light-pink: #ff69b4;
     --card-bg: rgba(255, 255, 255, 0.95);
-    --text-dark: #333;
+    --texto: #333;
 }
 
 * {
@@ -21,8 +21,7 @@ body {
     line-height: 1.6;
 }
 
-/* ===== CABEÇALHO (NAVBAR) ===== */
-/* Centraliza e dá espaçamento no topo */
+/* ===== CENTRALIZA O CABEÇALHO (NAVBAR) ===== */
 .navbar {
     position: fixed;
     top: 0;
@@ -57,15 +56,16 @@ body {
 
 .nav-link:hover { color: #333; }
 
-/* ===== HERO SECTION (INÍCIO) ===== */
+/* ===== HERO SECTION (INÍCIO CENTRALIZADO) ===== */
 .hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
     text-align: center;
-    padding-top: 100px; /* Evita que o título fique 'atrás' da navbar */
+    position: relative;
+    padding-top: 100px; /* Dá espaço do topo da navbar */
 }
 
 .titulo-3d {
@@ -78,6 +78,7 @@ body {
     filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
 }
 
+/* ORGANIZA OS EMOJIS (FLOAT-ITEMS) QUE ESTAVAM GRUDADOS */
 .floating-elements {
     position: absolute;
     width: 100%;
@@ -87,13 +88,20 @@ body {
 
 .float-item {
     position: absolute;
-    font-size: 3rem;
-    transition: transform 0.1s ease-out; /* Parallax com JS */
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
+    transition: transform 0.1s ease-out; /* Crucial para o JS Parallax */
 }
+
+/* Posiciona os emojis individualmente para não ficarem grudados */
+.float-item:nth-child(1) { top: 20%; left: 15%; }
+.float-item:nth-child(2) { top: 60%; left: 10%; }
+.float-item:nth-child(3) { top: 30%; right: 15%; }
+.float-item:nth-child(4) { top: 70%; right: 10%; }
 
 /* ===== SEÇÕES COMUNS ===== */
 section {
-    padding: 100px 20px; /* Dá um bom espaçamento entre as seções */
+    padding: 100px 20px; /* Dá um bom espaçamento vertical */
     max-width: 1100px;
     margin: auto;
 }
@@ -112,19 +120,19 @@ section h2 {
     border-radius: 20px;
     padding: 35px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    color: var(--text-dark);
+    color: var(--texto);
     transition: transform 0.1s ease-out; /* Efeito 3D com JS */
     transform-style: preserve-3d;
     position: relative;
     overflow: hidden;
-    margin-bottom: 30px; /* Garante espaçamento se tiverem um embaixo do outro */
+    margin-bottom: 30px; /* Dá espaçamento se tiverem um embaixo do outro */
 }
 
 /* ===== GRID DO BLOG E CERTIFICAÇÕES (RESOLVE O AMONTOADO) ===== */
-.blog-grid, .grid-certificados {
+.blog-grid, .grid-certificados, .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Colunas automáticas e limpas */
-    gap: 30px; /* Dá espaço entre as colunas e linhas */
+    gap: 30px; /* Dá espaço entre as colunas */
 }
 
 /* ===== BOTÕES ===== */
@@ -138,7 +146,7 @@ section h2 {
     display: inline-block;
 }
 
-.btn-primary { background: white; color: var(--primary-pink); }
+.btn-primary { background: white; color: var(--primary); }
 .btn-linkedin { background: #0077b5; }
 .btn-github { background: #333; }
 .btn-email { background: var(--dark-pink); }
