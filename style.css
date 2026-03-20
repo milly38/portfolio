@@ -1,146 +1,69 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #ff69b4, #ffc0cb);
   color: white;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* HEADER */
-header {
-  padding: 50px;
-  animation: fade 1s ease-in;
-}
+header { padding: 60px 20px; }
 
-/* SEÇÕES */
-section {
-  margin: 40px 20px;
-  animation: fade 1.2s ease-in;
-}
+section { padding: 40px 20px; max-width: 1000px; margin: auto; }
 
-/* SOBRE */
 .sobre {
-  max-width: 600px;
-  margin: auto;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* SKILLS */
-.skill {
-  margin: 15px;
-}
-
-.barra {
-  width: 80%;
-  height: 10px;
-  background: #fff;
-  margin: auto;
-  border-radius: 10px;
-}
-
-.barra div {
-  height: 10px;
-  background: #ff1493;
-  border-radius: 10px;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
+.grid-certificados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  flex-wrap: wrap; /* CORRIGE BUG DO CELULAR */
+  margin-top: 25px;
 }
+
+.cards { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
 
 .card {
   background: white;
-  color: #ff1493;
-  padding: 20px;
-  width: 250px;
+  color: #d1127c;
+  padding: 25px;
+  width: 280px;
   border-radius: 20px;
-
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  transition: all 0.4s ease;
-
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   position: relative;
+  transition: transform 0.1s ease-out;
+  text-align: left;
 }
 
-/* glow rosa */
+.card h3 { color: #ff1493; text-align: center; }
+
 .card::before {
   content: "";
   position: absolute;
   inset: -2px;
-  border-radius: 20px;
+  border-radius: 22px;
   background: linear-gradient(45deg, #ff69b4, #ff1493);
   z-index: -1;
-  filter: blur(15px);
-  opacity: 0.6;
+  filter: blur(10px);
+  opacity: 0.4;
 }
 
-.card:hover {
-  transform: perspective(1000px) rotateY(10deg) rotateX(10deg) scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.card:hover::before {
-  opacity: 1;
-  filter: blur(25px);
-}
-
-/* CONTATOS */
-.contatos {
-  margin-top: 40px;
-}
-
-/* BOTÕES */
 .btn {
   display: inline-block;
   margin: 10px;
-  padding: 12px 20px;
-  border-radius: 20px;
+  padding: 15px 30px;
+  border-radius: 30px;
   text-decoration: none;
   color: white;
   background: #ff1493;
-
-  transition: 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  font-weight: bold;
 }
 
-.btn:hover {
-  background: #ff69b4;
-  transform: scale(1.1);
-}
-
-/* RESPONSIVO (CELULAR) */
 @media (max-width: 768px) {
-
-  header {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-    max-width: 300px;
-  }
-
-}
-
-/* ANIMAÇÃO */
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .card { width: 90%; }
 }
