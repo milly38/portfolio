@@ -20,7 +20,7 @@ section { padding: 40px 20px; max-width: 1000px; margin: auto; }
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Certificados grid */
+/* Grid certificados */
 .grid-certificados {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -57,13 +57,13 @@ section { padding: 40px 20px; max-width: 1000px; margin: auto; }
   border-radius: 22px;
   background: linear-gradient(45deg, #ff69b4, #ff1493);
   z-index: -1;
-  filter: blur(10px);
-  opacity: 0; /* inicia invisível */
+  filter: blur(15px);
+  opacity: 0; /* começa invisível */
   transition: opacity 0.3s ease;
 }
 
 .card:hover::before {
-  opacity: 0.4; /* luz só no hover */
+  opacity: 0.4; /* só acende no hover */
 }
 
 .card h3 { color: #ff1493; text-align: center; }
@@ -81,5 +81,8 @@ section { padding: 40px 20px; max-width: 1000px; margin: auto; }
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .card { width: 90%; margin: auto; }
+  .card {
+    width: 90%;
+    margin: auto;
+  }
 }
