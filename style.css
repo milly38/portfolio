@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset básico e fonte */
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -8,10 +8,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Header */
 header {
   padding: 50px 20px;
 }
 
+/* Seções */
 section {
   padding: 40px 20px;
   max-width: 1000px;
@@ -26,7 +28,7 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Certificados grid */
+/* Grid de certificados */
 .grid-certificados {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -34,32 +36,28 @@ section {
   margin-top: 25px;
 }
 
-/* Cards projetos */
+/* Cards dos projetos */
 .cards {
-  display: flex;
-  justify-content: space-around; /* espaça os cards igualmente */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
-  flex-wrap: wrap;              /* quebra linha se não couber */
-  margin-top: 25px;
-  max-width: 1000px;            /* limita a largura do container */
-  margin-left: auto;
-  margin-right: auto;            /* centraliza horizontalmente */
-}
+  max-width: 1000px;
+  margin: 25px auto 0 auto; /* centraliza no desktop */
 }
 
+/* Card individual */
 .card {
   position: relative;
   background: white;
   color: #d1127c;
   padding: 25px;
-  width: 280px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   text-align: left;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Luz hover */
+/* Luz do hover */
 .card::before {
   content: "";
   position: absolute;
@@ -69,18 +67,20 @@ section {
   z-index: -1;
   filter: blur(15px);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover::before {
-  opacity: 0.4;
+  opacity: 0.4; /* luz só no hover */
 }
 
+/* Títulos dos cards */
 .card h3 {
   color: #ff1493;
   text-align: center;
 }
 
+/* Botões */
 .btn {
   display: inline-block;
   margin: 10px;
@@ -92,10 +92,10 @@ section {
   font-weight: bold;
 }
 
-/* Responsivo */
+/* Responsivo para celular */
 @media (max-width: 768px) {
   .card {
-    width: 90%;
+    width: 90%; /* ocupa quase toda a tela */
     margin: auto;
   }
 }
