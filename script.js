@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. EFEITO 3D NOS CARDS
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
@@ -11,32 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // Aumentei a divisão para 20 para o movimento ficar mais elegante
-            const rotateX = (y - centerY) / 20; 
-            const rotateY = (centerX - x) / 20;
+            // Faz o quadro inclinar seguindo o mouse
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-            card.style.transition = "transform 0.05s ease-out"; // Movimento quase instantâneo
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            // Deixa o fundo mais escuro/rosado quando o mouse mexe
+            card.style.backgroundColor = "#ffe0f0"; 
         });
 
         card.addEventListener('mouseleave', () => {
-            // Volta para o lugar de forma suave
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            card.style.transition = "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
-        });
-    });
-
-    // 2. EFEITO PARALLAX NOS EMOJIS (FLOAT-ITEMS)
-    window.addEventListener('mousemove', (e) => {
-        const floatItems = document.querySelectorAll('.float-item');
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        floatItems.forEach((item, index) => {
-            const speed = (index + 1) * 0.03;
-            const x = (window.innerWidth / 2 - mouseX) * speed;
-            const y = (window.innerHeight / 2 - mouseY) * speed;
-            item.style.transform = `translate(${x}px, ${y}px) rotate(${x * 0.05}deg)`;
+            // Quando o mouse sai, ele volta ao normal (branco e reto)
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            card.style.backgroundColor = "#fff5f9";
+            card.style.transition = "all 0.5s ease";
         });
     });
 });
