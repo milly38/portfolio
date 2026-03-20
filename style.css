@@ -1,171 +1,146 @@
-/* ===== VARIÁVEIS DE CORES E RESET ===== */
-:root {
-    --primary: #ff1493; /* Rosa Neon */
-    --light-pink: #ff69b4;
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --texto: #333;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #ff69b4, #ffc0cb);
-    color: white;
-    overflow-x: hidden;
-    line-height: 1.6;
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #ff69b4, #ffc0cb);
+  color: white;
+  text-align: center;
 }
 
-/* ===== CENTRALIZA O CABEÇALHO (NAVBAR) ===== */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px 0;
-    background: rgba(255, 20, 147, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+/* HEADER */
+header {
+  padding: 50px;
+  animation: fade 1s ease-in;
 }
 
-.nav-content {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 40px;
-    align-items: center;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.nav-link:hover { color: #333; }
-
-/* ===== HERO SECTION (INÍCIO CENTRALIZADO) ===== */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    text-align: center;
-    position: relative;
-    padding-top: 100px; /* Dá espaço do topo da navbar */
-}
-
-.titulo-3d {
-    font-size: 5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    background: linear-gradient(to right, #ff1493, #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
-}
-
-/* ORGANIZA OS EMOJIS (FLOAT-ITEMS) QUE ESTAVAM GRUDADOS */
-.floating-elements {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.float-item {
-    position: absolute;
-    font-size: 3.5rem;
-    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
-    transition: transform 0.1s ease-out; /* Crucial para o JS Parallax */
-}
-
-/* Posiciona os emojis individualmente para não ficarem grudados */
-.float-item:nth-child(1) { top: 20%; left: 15%; }
-.float-item:nth-child(2) { top: 60%; left: 10%; }
-.float-item:nth-child(3) { top: 30%; right: 15%; }
-.float-item:nth-child(4) { top: 70%; right: 10%; }
-
-/* ===== SEÇÕES COMUNS ===== */
+/* SEÇÕES */
 section {
-    padding: 100px 20px; /* Dá um bom espaçamento vertical */
-    max-width: 1100px;
-    margin: auto;
+  margin: 40px 20px;
+  animation: fade 1.2s ease-in;
 }
 
-section h2 {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+/* SOBRE */
+.sobre {
+  max-width: 600px;
+  margin: auto;
 }
 
-/* ===== CARDS COM BOM ESPAÇAMENTO E EFEITO VIDRO ===== */
+/* SKILLS */
+.skill {
+  margin: 15px;
+}
+
+.barra {
+  width: 80%;
+  height: 10px;
+  background: #fff;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.barra div {
+  height: 10px;
+  background: #ff1493;
+  border-radius: 10px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* CORRIGE BUG DO CELULAR */
+}
+
 .card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 35px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    color: var(--texto);
-    transition: transform 0.1s ease-out; /* Efeito 3D com JS */
-    transform-style: preserve-3d;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 30px; /* Dá espaçamento se tiverem um embaixo do outro */
+  background: white;
+  color: #ff1493;
+  padding: 20px;
+  width: 250px;
+  border-radius: 20px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
+
+  position: relative;
 }
 
-/* ===== GRID DO BLOG E CERTIFICAÇÕES (RESOLVE O AMONTOADO) ===== */
-.blog-grid, .grid-certificados, .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Colunas automáticas e limpas */
-    gap: 30px; /* Dá espaço entre as colunas */
+/* glow rosa */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ff69b4, #ff1493);
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.6;
 }
 
-/* ===== BOTÕES ===== */
-.btn-primary, .btn {
-    padding: 15px 35px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    transition: 0.3s;
-    display: inline-block;
+.card:hover {
+  transform: perspective(1000px) rotateY(10deg) rotateX(10deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-.btn-primary { background: white; color: var(--primary); }
-.btn-linkedin { background: #0077b5; }
-.btn-github { background: #333; }
-.btn-email { background: var(--dark-pink); }
-
-.btn:hover, .btn-primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+.card:hover::before {
+  opacity: 1;
+  filter: blur(25px);
 }
 
-/* ===== FOOTER ===== */
-footer {
-    padding: 50px;
-    background: rgba(0,0,0,0.05);
-    text-align: center;
+/* CONTATOS */
+.contatos {
+  margin-top: 40px;
 }
 
-/* RESPONSIVIDADE (PARA CELULAR) */
+/* BOTÕES */
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
+  background: #ff1493;
+
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+  background: #ff69b4;
+  transform: scale(1.1);
+}
+
+/* RESPONSIVO (CELULAR) */
 @media (max-width: 768px) {
-    .titulo-3d { font-size: 2.5rem; }
-    .nav-links { display: none; } /* Simplicidade para mobile */
-    .blog-grid { grid-template-columns: 1fr; }
+
+  header {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+}
+
+/* ANIMAÇÃO */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
