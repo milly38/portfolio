@@ -1,4 +1,4 @@
-/* Reset e fonte */
+/* Reset básico */
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -8,9 +8,15 @@ body {
   overflow-x: hidden;
 }
 
-header { padding: 60px 20px; }
+header {
+  padding: 50px 20px;
+}
 
-section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
 
 .sobre {
   background: rgba(255, 255, 255, 0.15);
@@ -20,7 +26,7 @@ section { padding: 40px 20px; max-width: 1000px; margin: auto; }
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Grid certificados */
+/* Certificados grid */
 .grid-certificados {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -45,11 +51,11 @@ section { padding: 40px 20px; max-width: 1000px; margin: auto; }
   width: 280px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
   text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Luz do hover */
+/* Luz hover */
 .card::before {
   content: "";
   position: absolute;
@@ -58,15 +64,18 @@ section { padding: 40px 20px; max-width: 1000px; margin: auto; }
   background: linear-gradient(45deg, #ff69b4, #ff1493);
   z-index: -1;
   filter: blur(15px);
-  opacity: 0; /* começa invisível */
-  transition: opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .card:hover::before {
-  opacity: 0.4; /* só acende no hover */
+  opacity: 0.4;
 }
 
-.card h3 { color: #ff1493; text-align: center; }
+.card h3 {
+  color: #ff1493;
+  text-align: center;
+}
 
 .btn {
   display: inline-block;
