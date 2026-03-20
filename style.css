@@ -37,10 +37,14 @@ section {
 /* Cards projetos */
 .cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-around; /* espaça os cards igualmente */
   gap: 25px;
-  flex-wrap: wrap;
+  flex-wrap: wrap;              /* quebra linha se não couber */
   margin-top: 25px;
+  max-width: 1000px;            /* limita a largura do container */
+  margin-left: auto;
+  margin-right: auto;            /* centraliza horizontalmente */
+}
 }
 
 .card {
