@@ -1,69 +1,63 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #ff69b4, #ffc0cb);
   color: white;
   text-align: center;
   overflow-x: hidden;
+  perspective: 1000px; /* Importante para o efeito 3D do JS */
 }
 
-header { padding: 60px 20px; }
+header { padding: 50px 20px; }
 
-section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+section { padding: 30px 20px; max-width: 900px; margin: auto; }
 
 .sobre {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
   border-radius: 20px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 30px;
 }
 
 .grid-certificados {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
 }
 
-.cards { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+.cards { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 
+/* ESTILO DOS QUADROS (CARDS) */
 .card {
   background: white;
   color: #d1127c;
-  padding: 25px;
-  width: 280px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  position: relative;
-  transition: transform 0.1s ease-out;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+  transform-style: preserve-3d; /* Permite profundidade */
   text-align: left;
+  cursor: pointer;
 }
 
-.card h3 { color: #ff1493; text-align: center; }
+.cert-item { background: rgba(255, 255, 255, 0.9); color: #d1127c; width: auto; }
 
-.card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 22px;
-  background: linear-gradient(45deg, #ff69b4, #ff1493);
-  z-index: -1;
-  filter: blur(10px);
-  opacity: 0.4;
-}
+.card h3 { color: #ff1493; margin-top: 0; text-align: center; }
 
 .btn {
   display: inline-block;
-  margin: 10px;
-  padding: 15px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  color: white;
+  padding: 12px 25px;
   background: #ff1493;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
   font-weight: bold;
+  margin: 5px;
 }
 
-@media (max-width: 768px) {
-  .card { width: 90%; }
+/* Efeito de brilho quando o mouse passa */
+.card:hover {
+  box-shadow: 0 20px 40px rgba(255, 20, 147, 0.4);
 }
