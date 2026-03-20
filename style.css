@@ -1,58 +1,163 @@
+/* ===== CONFIGURAÇÕES GERAIS E CORES ===== */
 :root {
-    --rosa-fundo: #ff85c1;
-    --rosa-card: #fff5f9;
-    --rosa-hover: #ffe0f0; /* Cor de quando o mouse passa */
-    --texto: #b01562;
+    --primary-pink: #ff1493; /* Rosa Neon */
+    --light-pink: #ff69b4;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-dark: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--rosa-fundo);
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff69b4, #ffc0cb);
+    color: white;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===== CABEÇALHO (NAVBAR) ===== */
+/* Centraliza e dá espaçamento no topo */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(255, 20, 147, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 40px;
     align-items: center;
 }
 
-/* O QUADRO (CARD) */
-.card {
-    background-color: var(--rosa-card);
-    border-radius: 20px;
-    padding: 25px;
-    margin: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease; /* Faz a mudança de cor ser suave */
-    cursor: pointer;
-    border: 2px solid transparent;
-}
-
-/* EFEITO QUE VOCÊ QUER: MOUSE EM CIMA */
-.card:hover {
-    background-color: var(--rosa-hover); /* Fica levemente mais escuro/rosado */
-    transform: translateY(-5px); /* Dá um pulinho para cima */
-    box-shadow: 0 15px 30px rgba(176, 21, 98, 0.3); /* Sombra rosa forte */
-    border-color: var(--texto); /* Aparece uma bordinha fina */
-}
-
-/* ORGANIZAÇÃO DOS QUADRINHOS EM LINHA */
-.grid-certificados {
+.nav-links {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1000px;
+    list-style: none;
+    gap: 25px;
 }
 
-.cert-item {
-    width: 250px;
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-link:hover { color: #333; }
+
+/* ===== HERO SECTION (INÍCIO) ===== */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px; /* Evita que o título fique 'atrás' da navbar */
+}
+
+.titulo-3d {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #ff1493, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
+}
+
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.float-item {
+    position: absolute;
+    font-size: 3rem;
+    transition: transform 0.1s ease-out; /* Parallax com JS */
+}
+
+/* ===== SEÇÕES COMUNS ===== */
+section {
+    padding: 100px 20px; /* Dá um bom espaçamento entre as seções */
+    max-width: 1100px;
+    margin: auto;
+}
+
+section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ===== CARDS COM BOM ESPAÇAMENTO E EFEITO VIDRO ===== */
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    color: var(--text-dark);
+    transition: transform 0.1s ease-out; /* Efeito 3D com JS */
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px; /* Garante espaçamento se tiverem um embaixo do outro */
+}
+
+/* ===== GRID DO BLOG E CERTIFICAÇÕES (RESOLVE O AMONTOADO) ===== */
+.blog-grid, .grid-certificados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Colunas automáticas e limpas */
+    gap: 30px; /* Dá espaço entre as colunas e linhas */
+}
+
+/* ===== BOTÕES ===== */
+.btn-primary, .btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-primary { background: white; color: var(--primary-pink); }
+.btn-linkedin { background: #0077b5; }
+.btn-github { background: #333; }
+.btn-email { background: var(--dark-pink); }
+
+.btn:hover, .btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    padding: 50px;
+    background: rgba(0,0,0,0.05);
     text-align: center;
 }
 
-h2, h3 {
-    color: var(--texto);
-}
-
-strong {
-    color: #ff1493;
+/* RESPONSIVIDADE (PARA CELULAR) */
+@media (max-width: 768px) {
+    .titulo-3d { font-size: 2.5rem; }
+    .nav-links { display: none; } /* Simplicidade para mobile */
+    .blog-grid { grid-template-columns: 1fr; }
 }
