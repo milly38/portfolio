@@ -1,63 +1,158 @@
-body {
+:root {
+  --primary: #ff1493;
+  --secondary: #ff69b4;
+  --dark: #d1127c;
+  --light: #ffc0cb;
+  --white: #ffffff;
+  --dark-bg: #0a0e27;
+}
+
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff69b4, #ffc0cb);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ffb6d9);
   color: white;
-  text-align: center;
   overflow-x: hidden;
-  perspective: 1000px; /* Importante para o efeito 3D do JS */
+  perspective: 1500px; /* Aumentado para um 3D mais bonito */
+  position: relative;
 }
 
-header { padding: 50px 20px; }
-
-section { padding: 30px 20px; max-width: 900px; margin: auto; }
-
-.sobre {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  border-radius: 20px;
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 14, 39, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  margin-bottom: 30px;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 20, 147, 0.2);
 }
 
-.grid-certificados {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.cards { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-
-/* ESTILO DOS QUADROS (CARDS) */
-.card {
-  background: white;
-  color: #d1127c;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
-  transform-style: preserve-3d; /* Permite profundidade */
-  text-align: left;
-  cursor: pointer;
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
 }
 
-.cert-item { background: rgba(255, 255, 255, 0.9); color: #d1127c; width: auto; }
-
-.card h3 { color: #ff1493; margin-top: 0; text-align: center; }
-
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #ff1493;
+.nav-link {
   color: white;
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-  margin: 5px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-/* Efeito de brilho quando o mouse passa */
+/* HERO SECTION */
+.hero {
+  padding: 150px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.titulo-3d {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff1493, #ff69b4, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.7;
+  pointer-events: none; /* Não atrapalha o clique */
+  z-index: 1;
+}
+
+/* SECTIONS */
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* O SEGREDO DO EFEITO MOUSE: A CLASSE .CARD */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--dark);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+  /* IMPORTANTE: Transição rápida para não dar delay no mouse */
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
 .card:hover {
-  box-shadow: 0 20px 40px rgba(255, 20, 147, 0.4);
+  box-shadow: 0 25px 60px rgba(255, 20, 147, 0.3);
+}
+
+/* GRID DOS CARDS */
+.grid-certificados, .blog-grid, .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 2rem;
+}
+
+/* BOTÕES */
+.btn-primary {
+  padding: 15px 40px;
+  background: linear-gradient(135deg, var(--primary), var(--dark));
+  color: white;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 30px;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.btn-linkedin { background: #0077B5; }
+.btn-github { background: #333; }
+.btn-email { background: var(--primary); }
+
+footer {
+  background: rgba(10, 14, 39, 0.8);
+  padding: 30px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .titulo-3d { font-size: 2.5rem; }
+  .nav-links { display: none; }
 }
